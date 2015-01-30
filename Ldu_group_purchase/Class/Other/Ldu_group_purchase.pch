@@ -1,0 +1,60 @@
+//
+//  Ldu_group_purchase.pch
+//  Ldu_group_purchase
+//
+//  Created by Jinhong on 15-1-13.
+//  Copyright (c) 2015年 xiaoxiaobing. All rights reserved.
+//
+
+#ifdef __OBJC__
+/**
+ *  系统类
+ */
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+/**
+ *  自己类
+ */
+
+#import "MJExtension.h"
+#import "UIView+Extension.h"
+#import "UIView+AutoLayout.h"
+#import "UIButton+Extension.h"
+#import "XXBMetaDataTool.h"
+#import "MBProgressHUD+MJ.h"
+#import "XXBConst.h"
+/**
+ *  提高效率
+ */
+
+#define XXBNotificationCenter [NSNotificationCenter defaultCenter]
+
+#define XXBAddObsver(methodName, noteName) [XXBNotificationCenter addObserver:self selector:@selector(methodName) name:noteName object:nil];
+#define XXBRemoveObsver [XXBNotificationCenter removeObserver:self];
+#define XXBGlobalBg XXBColor(230, 230, 230)
+
+
+#define iPhone ([[UIDevice currentDevice].model rangeOfString:@"iPhone"].length > 0)
+#define iPod  ([[UIDevice currentDevice].model rangeOfString:@"iPod"].length > 0)
+#define ios8 ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0)
+#define XXBColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0  blue:(b)/255.0  alpha:1]
+/**
+ *  随机色
+ */
+#define randomColor [UIColor colorWithRed:(arc4random()%255 /255.0)green:(arc4random()%255 /255.0) blue:(arc4random()%255 /255.0) alpha:1]
+
+#define XXBScreenBounds [UIScreen mainScreen].bounds
+#define XXBScreenWidth  XXBScreenBounds.size.width
+
+/**
+ *  编译优化
+ */
+
+#ifdef  DEBUG // 调试阶段
+#define XXBLog(...) NSLog(__VA_ARGS__)
+#else //发布阶段
+#define XXBLog(...)
+#endif
+
+#endif
