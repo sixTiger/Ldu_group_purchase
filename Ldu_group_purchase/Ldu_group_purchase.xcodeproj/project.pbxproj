@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09768C261AE265CD00089697 /* XXBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09768C241AE265CD00089697 /* XXBLoginViewController.m */; };
+		09768C271AE265CD00089697 /* XXBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09768C251AE265CD00089697 /* XXBLoginViewController.xib */; };
+		09A89E6C1AE333AB000A63D6 /* XXBChangeUserInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A89E6A1AE333AB000A63D6 /* XXBChangeUserInfoVC.m */; };
+		09A89E6D1AE333AB000A63D6 /* XXBChangeUserInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A89E6B1AE333AB000A63D6 /* XXBChangeUserInfoVC.xib */; };
+		09A89E701AE33416000A63D6 /* XXBLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A89E6E1AE33416000A63D6 /* XXBLoginTool.m */; };
+		09A89E721AE35FFC000A63D6 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A89E711AE35FFC000A63D6 /* Launch Screen.xib */; };
+		09A89E761AE3624A000A63D6 /* XXBViewShaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A89E751AE3624A000A63D6 /* XXBViewShaker.m */; };
 		C41702401A668113006A6FDD /* XXBCitySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C417023F1A668113006A6FDD /* XXBCitySearchViewController.m */; };
 		C41702441A6683C1006A6FDD /* XXBCitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41702421A6683C1006A6FDD /* XXBCitiesViewController.m */; };
 		C41702451A6683C1006A6FDD /* XXBCitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41702431A6683C1006A6FDD /* XXBCitiesViewController.xib */; };
@@ -124,6 +131,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09768C231AE265CD00089697 /* XXBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBLoginViewController.h; sourceTree = "<group>"; };
+		09768C241AE265CD00089697 /* XXBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBLoginViewController.m; sourceTree = "<group>"; };
+		09768C251AE265CD00089697 /* XXBLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XXBLoginViewController.xib; sourceTree = "<group>"; };
+		09A89E691AE333AB000A63D6 /* XXBChangeUserInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBChangeUserInfoVC.h; sourceTree = "<group>"; };
+		09A89E6A1AE333AB000A63D6 /* XXBChangeUserInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBChangeUserInfoVC.m; sourceTree = "<group>"; };
+		09A89E6B1AE333AB000A63D6 /* XXBChangeUserInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XXBChangeUserInfoVC.xib; sourceTree = "<group>"; };
+		09A89E6E1AE33416000A63D6 /* XXBLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBLoginTool.m; sourceTree = "<group>"; };
+		09A89E6F1AE33416000A63D6 /* XXBUserTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBUserTool.h; sourceTree = "<group>"; };
+		09A89E711AE35FFC000A63D6 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		09A89E741AE3624A000A63D6 /* XXBViewShaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBViewShaker.h; sourceTree = "<group>"; };
+		09A89E751AE3624A000A63D6 /* XXBViewShaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBViewShaker.m; sourceTree = "<group>"; };
 		C417023E1A668113006A6FDD /* XXBCitySearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBCitySearchViewController.h; sourceTree = "<group>"; };
 		C417023F1A668113006A6FDD /* XXBCitySearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBCitySearchViewController.m; sourceTree = "<group>"; };
 		C41702411A6683C1006A6FDD /* XXBCitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBCitiesViewController.h; sourceTree = "<group>"; };
@@ -343,6 +361,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09A89E731AE3624A000A63D6 /* XXBViewShaker */ = {
+			isa = PBXGroup;
+			children = (
+				09A89E741AE3624A000A63D6 /* XXBViewShaker.h */,
+				09A89E751AE3624A000A63D6 /* XXBViewShaker.m */,
+			);
+			path = XXBViewShaker;
+			sourceTree = "<group>";
+		};
 		C4391E531A64CA8F0018AA7A = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +394,7 @@
 				C4391E851A64CC5E0018AA7A /* Class */,
 				C4391E6C1A64CA8F0018AA7A /* Images.xcassets */,
 				C4391E5F1A64CA8F0018AA7A /* Supporting Files */,
+				09A89E711AE35FFC000A63D6 /* Launch Screen.xib */,
 			);
 			path = Ldu_group_purchase;
 			sourceTree = "<group>";
@@ -492,6 +520,7 @@
 		C4391E8E1A64CC5E0018AA7A /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				09A89E731AE3624A000A63D6 /* XXBViewShaker */,
 				C4D830711A66309000C3D63E /* MBProgressHUD */,
 				C4391F9E1A65105F0018AA7A /* MJRefresh */,
 				C4391F6C1A6510200018AA7A /* SDWebImage */,
@@ -841,6 +870,12 @@
 				C4B198881A67AB3D00E66674 /* XXBDealLocalListViewController.m */,
 				C4B1988A1A67ADDB00E66674 /* XXBCollectViewController.h */,
 				C4B1988B1A67ADDB00E66674 /* XXBCollectViewController.m */,
+				09768C231AE265CD00089697 /* XXBLoginViewController.h */,
+				09768C241AE265CD00089697 /* XXBLoginViewController.m */,
+				09768C251AE265CD00089697 /* XXBLoginViewController.xib */,
+				09A89E691AE333AB000A63D6 /* XXBChangeUserInfoVC.h */,
+				09A89E6A1AE333AB000A63D6 /* XXBChangeUserInfoVC.m */,
+				09A89E6B1AE333AB000A63D6 /* XXBChangeUserInfoVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -848,6 +883,8 @@
 		C4B198801A67A47C00E66674 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				09A89E6E1AE33416000A63D6 /* XXBLoginTool.m */,
+				09A89E6F1AE33416000A63D6 /* XXBUserTool.h */,
 				C4B198811A67A55200E66674 /* XXBDealLocalTool.h */,
 				C4B198821A67A55200E66674 /* XXBDealLocalTool.m */,
 			);
@@ -969,13 +1006,16 @@
 				C4391F4F1A650C310018AA7A /* categories.plist in Resources */,
 				C4B198611A676E6D00E66674 /* XXBDropdownMenu.xib in Resources */,
 				C4D830781A66309000C3D63E /* MBProgressHUD.bundle in Resources */,
+				09768C271AE265CD00089697 /* XXBLoginViewController.xib in Resources */,
 				C4391F521A650C310018AA7A /* sorts.plist in Resources */,
 				C4391F501A650C310018AA7A /* cities.plist in Resources */,
 				C4FB7F631A69FCBB00DDE9CD /* XXBMapViewController.xib in Resources */,
 				C4B1985E1A676E6D00E66674 /* XXBDealsTopMenu.xib in Resources */,
 				C41702451A6683C1006A6FDD /* XXBCitiesViewController.xib in Resources */,
+				09A89E721AE35FFC000A63D6 /* Launch Screen.xib in Resources */,
 				C4391E6D1A64CA8F0018AA7A /* Images.xcassets in Resources */,
 				C4D8308E1A66538100C3D63E /* XXBRegionsViewController.xib in Resources */,
+				09A89E6D1AE333AB000A63D6 /* XXBChangeUserInfoVC.xib in Resources */,
 				C4391FAF1A65105F0018AA7A /* MJRefresh.bundle in Resources */,
 				C4391F511A650C310018AA7A /* cityGroups.plist in Resources */,
 				C4D830871A663BD900C3D63E /* XXBSortsViewController.xib in Resources */,
@@ -1033,6 +1073,7 @@
 				C4B1985D1A676E6D00E66674 /* XXBDealsTopMenu.m in Sources */,
 				C4B1988F1A67AEF600E66674 /* XXBSearchViewController.m in Sources */,
 				C4391EB71A64D45D0018AA7A /* AwesomeMenuItem.m in Sources */,
+				09A89E761AE3624A000A63D6 /* XXBViewShaker.m in Sources */,
 				C4391E911A64CC5E0018AA7A /* main.m in Sources */,
 				C41702401A668113006A6FDD /* XXBCitySearchViewController.m in Sources */,
 				C4D830691A6616C200C3D63E /* UIBarButtonItem+Extension.m in Sources */,
@@ -1046,6 +1087,7 @@
 				C4391F901A6510200018AA7A /* SDImageCache.m in Sources */,
 				C4391F911A6510200018AA7A /* SDWebImageCompat.m in Sources */,
 				C4B198681A676EF600E66674 /* XXBDealListViewController.m in Sources */,
+				09A89E701AE33416000A63D6 /* XXBLoginTool.m in Sources */,
 				C4391F171A6508BA0018AA7A /* XXBMetaDataTool.m in Sources */,
 				C4391F961A6510200018AA7A /* SDWebImagePrefetcher.m in Sources */,
 				C4391FB11A65105F0018AA7A /* MJRefreshConst.m in Sources */,
@@ -1058,6 +1100,7 @@
 				C4391EC11A64D45D0018AA7A /* MJTypeEncoding.m in Sources */,
 				C4391FC11A65184C0018AA7A /* XXBEmptyView.m in Sources */,
 				C4B198651A676E9E00E66674 /* XXBCenterLineLabel.m in Sources */,
+				09A89E6C1AE333AB000A63D6 /* XXBChangeUserInfoVC.m in Sources */,
 				C4391EC91A64D48D0018AA7A /* UIView+AutoLayout.m in Sources */,
 				C4D830771A66309000C3D63E /* MBProgressHUD+MJ.m in Sources */,
 				C4391FB91A6511900018AA7A /* XXBDealCell.m in Sources */,
@@ -1065,6 +1108,7 @@
 				C4391FBE1A65137F0018AA7A /* XXBRestriction.m in Sources */,
 				C4D830821A663BBE00C3D63E /* XXBRegionsViewController.m in Sources */,
 				C4D8306E1A66279B00C3D63E /* UIButton+Extension.m in Sources */,
+				09768C261AE265CD00089697 /* XXBLoginViewController.m in Sources */,
 				C4391EC21A64D45D0018AA7A /* NSObject+MJCoding.m in Sources */,
 				C41702441A6683C1006A6FDD /* XXBCitiesViewController.m in Sources */,
 				C4391EBB1A64D45D0018AA7A /* MJConst.m in Sources */,

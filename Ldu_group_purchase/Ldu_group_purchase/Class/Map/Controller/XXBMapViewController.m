@@ -30,7 +30,7 @@
 /**
  *  是否正在处理请求
  */
-@property(nonatomic , assign ,getter= isDealingDeals)BOOL 				dealingDeals;
+@property(nonatomic , assign ,getter= isDealingDeals)BOOL 	dealingDeals;
 
 
 /** 分类菜单 */
@@ -45,6 +45,10 @@
 
 
 @property (nonatomic, strong) CLLocationManager *locMgr;
+/**
+ *  是否是第一次打开控制器
+ */
+@property(nonatomic , assign)BOOL firstOpen;
 - (IBAction)backToUserLocation;
 @end
 
@@ -55,7 +59,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.firstOpen = YES;
     
     // 设置导航栏的内容
     [self setupNav];
@@ -121,18 +125,21 @@
  */
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    /**
-     *  设置地图的现实区域
-     */
-    CLLocationCoordinate2D center = userLocation.location.coordinate;
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 1.1);
-    MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
-    [mapView setRegion:region animated:YES];
-    /**
-     *  设置中心点
-     */
-    //[mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
-    
+    if (self.firstOpen)
+    {
+        self.firstOpen = NO;
+        /**
+         *  设置地图的现实区域
+         */
+        CLLocationCoordinate2D center = userLocation.location.coordinate;
+        MKCoordinateSpan span = MKCoordinateSpanMake(0.1,0.1);
+        MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
+        [mapView setRegion:region animated:YES];
+        /**
+         *  设置中心点
+         */
+        //    [mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
+    }
     /**
      *  获取城市名称
      */
@@ -171,7 +178,6 @@
         [self setupDeals:result.deals];
     } failure:^(NSError *error) {
         [MBProgressHUD showError:@"加载团购失败，请稍后再试"];
-        
         self.dealingDeals = NO;
     }];
 }
@@ -204,7 +210,7 @@
         NSString *category = [annotation.deal.categories firstObject];
         NSString *mapIcon = [[XXBMetaDataTool sharedMetaDataTool] categoryWithName:category].map_icon;
         annoView.image = [UIImage imageNamed:mapIcon];
-    } else { // 特定的类别
+    } else { // 特定的类别¸
         annoView.image = [UIImage imageNamed:self.selectedCategory.map_icon];
     }
     rightBtn.deal = annotation.deal;

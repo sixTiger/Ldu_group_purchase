@@ -161,7 +161,7 @@
     // 拼接详情的URL路径
     NSString *ID = self.deal.deal_id;
     ID = [ID substringFromIndex:[ID rangeOfString:@"-"].location + 1];
-    NSString *urlStr = [NSString stringWithFormat:@"http://lite.m.dianping.com/group/deal/moreinfo/%@", ID];
+    NSString *urlStr = [NSString stringWithFormat:@"http://m.dianping.com/tuan/deal/moreinfo/%@", ID];
     
     if ([webView.request.URL.absoluteString isEqualToString:urlStr])
     { // 加载详情页面完毕
@@ -184,8 +184,6 @@
         
         // 显示网页内容
         webView.scrollView.hidden = NO;
-        // 移除圈圈
-//        [self.loadingView removeFromSuperview];
         [MBProgressHUD hideHUDForView:self.webView animated:YES];
     }
     else

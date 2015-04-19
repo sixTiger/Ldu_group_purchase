@@ -36,13 +36,13 @@
 
 
 #pragma mark - 公共方法
-- (void)selectMain:(int)mainRow
+- (void)selectMain:(NSInteger)mainRow
 {
     [self.mainTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:mainRow inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
     [self.subTableView reloadData];
 }
 
-- (void)selectSub:(int)subRow
+- (void)selectSub:(NSInteger)subRow
 {
     [self.subTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:subRow inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
@@ -62,7 +62,7 @@
         return self.items.count;
     } else {
         // 得到mainTableView选中的行
-        int mainRow = (int)[self.mainTableView indexPathForSelectedRow].row;
+        NSInteger mainRow = [self.mainTableView indexPathForSelectedRow].row;
         id<XXBDropdownMenuItem> item = self.items[mainRow];
         return [item subtitles].count;
     }
@@ -81,7 +81,7 @@
         XXBDropdownSubCell *subCell = [XXBDropdownSubCell cellWithTableView:tableView];
         
         // 得到mainTableView选中的行
-        int mainRow = [self.mainTableView indexPathForSelectedRow].row;
+        NSInteger mainRow = [self.mainTableView indexPathForSelectedRow].row;
         id<XXBDropdownMenuItem> item = self.items[mainRow];
         subCell.textLabel.text = [item subtitles][indexPath.row];
         return subCell;

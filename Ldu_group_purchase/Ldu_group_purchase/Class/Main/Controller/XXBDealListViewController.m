@@ -102,8 +102,9 @@
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
     // 每一行的最小间距
     CGFloat lineSpacing = 25;
+#warning 计算的时候会有小偏差
     // 每一列的最小间距 为了适配 iPadAir 减 1
-    CGFloat interitemSpacing = (totalWidth - columns * layout.itemSize.width) / (columns + 1) ;
+    CGFloat interitemSpacing = (totalWidth - columns * layout.itemSize.width) / (columns + 1) - 1 ;
     //NSLog(@"%lf  %d  %lf",interitemSpacing ,columns ,totalWidth);
     layout.minimumInteritemSpacing = interitemSpacing;
     layout.minimumLineSpacing = lineSpacing;

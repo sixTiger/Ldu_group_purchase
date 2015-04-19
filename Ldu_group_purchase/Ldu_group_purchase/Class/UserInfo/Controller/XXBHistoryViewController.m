@@ -32,13 +32,6 @@
     [self.deals addObjectsFromArray:historyDeals];
     [self.collectionView reloadData];
 }
-
-#pragma mark - 实现父类方法
-- (NSString *)emptyIcon
-{
-    return @"icon_latestBrowse_empty";
-}
-
 /**
  *  删除
  */
@@ -46,6 +39,13 @@
 {
     [[XXBDealLocalTool sharedDealLocalTool] unsaveHistoryDeals:self.willDeletedDeals];
 }
+
+#pragma mark - 实现父类方法
+- (NSString *)emptyIcon
+{
+    return @"icon_latestBrowse_empty";
+}
+
 
 
 @end

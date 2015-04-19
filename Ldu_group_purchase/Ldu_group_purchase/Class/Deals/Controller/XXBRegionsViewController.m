@@ -85,7 +85,7 @@
 {
     _selectedRegion = selectedRegion;
     
-    int mainRow = [self.menu.items indexOfObject:selectedRegion];
+    NSInteger mainRow = [self.menu.items indexOfObject:selectedRegion];
     [self.menu selectMain:mainRow];
 }
 
@@ -93,7 +93,7 @@
 {
     _selectedSubRegionName = [selectedSubRegionName copy];
     
-    int subRow = [self.selectedRegion.subregions indexOfObject:selectedSubRegionName];
+    NSInteger subRow = [self.selectedRegion.subregions indexOfObject:selectedSubRegionName];
     [self.menu selectSub:subRow];
 }
 #pragma mark - 懒加载

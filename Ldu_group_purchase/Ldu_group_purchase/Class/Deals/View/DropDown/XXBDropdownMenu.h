@@ -41,6 +41,6 @@
 
 + (instancetype)menu;
 
-- (void)selectMain:(int)mainRow;
-- (void)selectSub:(int)subRow;
+- (void)selectMain:(NSInteger)mainRow;
+- (void)selectSub:(NSInteger)subRow;
 @end

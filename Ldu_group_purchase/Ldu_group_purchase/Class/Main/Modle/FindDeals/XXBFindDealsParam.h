@@ -4,7 +4,7 @@
 //
 //  Created by Jinhong on 15-1-13.
 //  Copyright (c) 2015年 xiaoxiaobing. All rights reserved.
-//
+//  搜所需要上传的参数模型
 
 #import <Foundation/Foundation.h>
 

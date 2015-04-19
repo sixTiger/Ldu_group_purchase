@@ -31,6 +31,7 @@
 #import "XXBCollectViewController.h"
 #import "XXBSearchViewController.h"
 #import "XXBMapViewController.h"
+#import "XXBLoginViewController.h"
 
 @interface XXBDealsViewController ()<AwesomeMenuDelegate>
 
@@ -498,6 +499,13 @@
 {
     [self awesomeMenuWillAnimateClose:menu];
     switch (idx) {
+        case 0:
+        { //登录
+            XXBLoginViewController *collectVC = [[XXBLoginViewController alloc] init];
+            XXBNavigationController *nav = [[XXBNavigationController alloc] initWithRootViewController:collectVC];
+            [self presentViewController:nav animated:YES completion:nil];
+            break;
+        }
         case 1:
         { //收藏
             XXBCollectViewController *collectVC = [[XXBCollectViewController alloc] init];
