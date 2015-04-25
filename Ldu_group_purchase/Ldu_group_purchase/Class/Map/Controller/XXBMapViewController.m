@@ -173,6 +173,7 @@
     params.longitude = @(center.longitude);
     params.city = self.cityName;
     params.radius = @(5000);
+    params.category = self.selectedSubCategoryName;
     // 2.发送请求给服务器
     [XXBDealTool findDeals:params success:^(XXBFindDealsResult *result) {
         [self setupDeals:result.deals];
@@ -181,7 +182,6 @@
         self.dealingDeals = NO;
     }];
 }
-
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(XXBDealAnnotation *)annotation
 {
     if (![annotation isKindOfClass:[XXBDealAnnotation class]]) return nil;
