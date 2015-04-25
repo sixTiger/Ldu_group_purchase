@@ -163,7 +163,10 @@
     // 取出通知中的数据
     self.selectedCategory = note.userInfo[XXBSelectedCategory];
     self.selectedSubCategoryName = note.userInfo[XXBSelectedSubCategoryName];
-    
+    if(note.userInfo[XXBSelectedSubCategoryName] == nil)
+    {
+        self.selectedSubCategoryName = self.selectedCategory.name;
+    }
     // 设置菜单数据
     self.categoryMenu.imageButton.image = self.selectedCategory.icon;
     self.categoryMenu.imageButton.highlightedImage = self.selectedCategory.highlighted_icon;

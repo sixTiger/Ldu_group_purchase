@@ -82,7 +82,7 @@
 {
     _selectedSubCategoryName = [selectedSubCategoryName copy];
     
-    int subRow = [self.selectedCategory.subcategories indexOfObject:selectedSubCategoryName];
+    NSInteger subRow = [self.selectedCategory.subcategories indexOfObject:selectedSubCategoryName];
     [self.menu selectSub:subRow];
 }
 

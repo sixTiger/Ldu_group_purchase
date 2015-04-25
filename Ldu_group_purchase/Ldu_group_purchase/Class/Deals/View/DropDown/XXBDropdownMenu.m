@@ -63,8 +63,14 @@
     } else {
         // 得到mainTableView选中的行
         NSInteger mainRow = [self.mainTableView indexPathForSelectedRow].row;
-        id<XXBDropdownMenuItem> item = self.items[mainRow];
-        return [item subtitles].count;
+        if (mainRow < 0) {
+            return 0;
+        }
+        else
+        {
+            id<XXBDropdownMenuItem> item = self.items[mainRow];
+            return [item subtitles].count;
+        }
     }
 }
 
