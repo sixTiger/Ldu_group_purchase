@@ -147,7 +147,7 @@
         if (placemarks.count == 0)
             return;
         CLPlacemark *placemark = [placemarks firstObject];
-        NSString *city = placemark.addressDictionary[@"State"];
+        NSString *city = placemark.addressDictionary[@"City"];
         self.cityName = [city substringToIndex:city.length - 1];
         
         self.cityName = [self nameOfChinese:self.cityName];
@@ -178,7 +178,7 @@
     [XXBDealTool findDeals:params success:^(XXBFindDealsResult *result) {
         [self setupDeals:result.deals];
     } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"加载团购失败，请稍后再试"];
+        [MBProgressHUD showError:@"加载团购失败，请稍后再试" toView:self.mapView];
         self.dealingDeals = NO;
     }];
 }

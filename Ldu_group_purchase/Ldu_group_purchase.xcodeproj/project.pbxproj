@@ -14,6 +14,8 @@
 		09A89E701AE33416000A63D6 /* XXBLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A89E6E1AE33416000A63D6 /* XXBLoginTool.m */; };
 		09A89E721AE35FFC000A63D6 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A89E711AE35FFC000A63D6 /* Launch Screen.xib */; };
 		09A89E761AE3624A000A63D6 /* XXBViewShaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A89E751AE3624A000A63D6 /* XXBViewShaker.m */; };
+		09E602C81AF9B48100F41AAF /* XXBRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E602C61AF9B48100F41AAF /* XXBRegisterVC.m */; };
+		09E602C91AF9B48100F41AAF /* XXBRegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E602C71AF9B48100F41AAF /* XXBRegisterVC.xib */; };
 		C41702401A668113006A6FDD /* XXBCitySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C417023F1A668113006A6FDD /* XXBCitySearchViewController.m */; };
 		C41702441A6683C1006A6FDD /* XXBCitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41702421A6683C1006A6FDD /* XXBCitiesViewController.m */; };
 		C41702451A6683C1006A6FDD /* XXBCitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41702431A6683C1006A6FDD /* XXBCitiesViewController.xib */; };
@@ -142,6 +144,9 @@
 		09A89E711AE35FFC000A63D6 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		09A89E741AE3624A000A63D6 /* XXBViewShaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBViewShaker.h; sourceTree = "<group>"; };
 		09A89E751AE3624A000A63D6 /* XXBViewShaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBViewShaker.m; sourceTree = "<group>"; };
+		09E602C51AF9B48100F41AAF /* XXBRegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBRegisterVC.h; sourceTree = "<group>"; };
+		09E602C61AF9B48100F41AAF /* XXBRegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBRegisterVC.m; sourceTree = "<group>"; };
+		09E602C71AF9B48100F41AAF /* XXBRegisterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XXBRegisterVC.xib; sourceTree = "<group>"; };
 		C417023E1A668113006A6FDD /* XXBCitySearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBCitySearchViewController.h; sourceTree = "<group>"; };
 		C417023F1A668113006A6FDD /* XXBCitySearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBCitySearchViewController.m; sourceTree = "<group>"; };
 		C41702411A6683C1006A6FDD /* XXBCitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBCitiesViewController.h; sourceTree = "<group>"; };
@@ -876,6 +881,9 @@
 				09A89E691AE333AB000A63D6 /* XXBChangeUserInfoVC.h */,
 				09A89E6A1AE333AB000A63D6 /* XXBChangeUserInfoVC.m */,
 				09A89E6B1AE333AB000A63D6 /* XXBChangeUserInfoVC.xib */,
+				09E602C51AF9B48100F41AAF /* XXBRegisterVC.h */,
+				09E602C61AF9B48100F41AAF /* XXBRegisterVC.m */,
+				09E602C71AF9B48100F41AAF /* XXBRegisterVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1012,6 +1020,7 @@
 				C4FB7F631A69FCBB00DDE9CD /* XXBMapViewController.xib in Resources */,
 				C4B1985E1A676E6D00E66674 /* XXBDealsTopMenu.xib in Resources */,
 				C41702451A6683C1006A6FDD /* XXBCitiesViewController.xib in Resources */,
+				09E602C91AF9B48100F41AAF /* XXBRegisterVC.xib in Resources */,
 				09A89E721AE35FFC000A63D6 /* Launch Screen.xib in Resources */,
 				C4391E6D1A64CA8F0018AA7A /* Images.xcassets in Resources */,
 				C4D8308E1A66538100C3D63E /* XXBRegionsViewController.xib in Resources */,
@@ -1042,6 +1051,7 @@
 				C4391F8E1A6510200018AA7A /* MKAnnotationView+WebCache.m in Sources */,
 				C4B198861A67A9BC00E66674 /* XXBHistoryViewController.m in Sources */,
 				C4391F141A6507F90018AA7A /* XXBDealTool.m in Sources */,
+				09E602C81AF9B48100F41AAF /* XXBRegisterVC.m in Sources */,
 				C4D830701A6627B100C3D63E /* Foundation+Log.m in Sources */,
 				C4391F951A6510200018AA7A /* SDWebImageManager.m in Sources */,
 				C4D830791A66309000C3D63E /* MBProgressHUD.m in Sources */,

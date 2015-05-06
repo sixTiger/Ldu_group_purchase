@@ -10,6 +10,7 @@
 #import "UIBarButtonItem+Extension.h"
 #import "XXBUserTool.h"
 #import "XXBViewShaker.h"
+#import "XXBRegisterVC.h"
 
 @interface XXBLoginViewController ()
 /**
@@ -61,7 +62,6 @@
 
 - (IBAction)autoLoginCLick:(UIButton *)sender;
 
-
 /**
  *  返回
  */
@@ -72,6 +72,7 @@
  *  登录点击
  */
 - (IBAction)loginClick:(id)sender;
+- (IBAction)registerClick:(UIButton *)sender;
 @end
 
 @implementation XXBLoginViewController
@@ -81,11 +82,6 @@
     // 设置左上角的返回按钮
     self.navigationItem.leftBarButtonItems = @[self.backItem];
     [self setLoginViewController];
-}
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-#pragma mark - 默认注册一个账号
     [XXBUserTool registerWithUserName:@"123" password:@"123" successed:^{
         
     } failed:^(NSString *error) {
@@ -111,13 +107,23 @@
 }
 - (IBAction)loginClick:(id)sender {
     [self saveButtonStates];
+    __weak typeof(self) weakSelf = self;
     [XXBUserTool loginWithUserName:self.userName.text password:self.userPassword.text successed:^{
-        [MBProgressHUD showSuccess:@"登录成功"];
+        [MBProgressHUD showSuccess:@"登录成功" toView:self.view];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        });
     } failed:^(NSString *error) {
         [MBProgressHUD showError:error toView:self.view];
-        [[[XXBViewShaker alloc] initWithViewsArray:@[self.userName,self.userNameIcon,self.userNameBG,self.userPassword,self.userPasswordIcon,self.userPasswordBG]] shake];
+        [[[XXBViewShaker alloc] initWithViewsArray:@[weakSelf.userName,weakSelf.userNameIcon,weakSelf.userNameBG,weakSelf.userPassword,weakSelf.userPasswordIcon,weakSelf.userPasswordBG]] shake];
     }];
 
+}
+
+- (IBAction)registerClick:(UIButton *)sender
+{
+    XXBRegisterVC *reisterVC = [[XXBRegisterVC alloc] init];
+    [self.navigationController pushViewController:reisterVC animated:YES];
 }
 /**
  设置窗口的信息
