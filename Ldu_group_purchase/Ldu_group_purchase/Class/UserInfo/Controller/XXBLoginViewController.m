@@ -73,20 +73,40 @@
  */
 - (IBAction)loginClick:(id)sender;
 - (IBAction)registerClick:(UIButton *)sender;
+
+@property (weak, nonatomic) IBOutlet UIView *logbgView;
+
 @end
 
 @implementation XXBLoginViewController
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self addKeyboardNote];
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 设置左上角的返回按钮
     self.navigationItem.leftBarButtonItems = @[self.backItem];
     [self setLoginViewController];
+    self.iconButton.layer.cornerRadius = self.iconButton.width * 0.5;
+    self.iconButton.clipsToBounds = YES;
     [XXBUserTool registerWithUserName:@"123" password:@"123" successed:^{
         
     } failed:^(NSString *error) {
         
     }];
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 #pragma mark -  事件处理
 
@@ -117,7 +137,7 @@
         [MBProgressHUD showError:error toView:self.view];
         [[[XXBViewShaker alloc] initWithViewsArray:@[weakSelf.userName,weakSelf.userNameIcon,weakSelf.userNameBG,weakSelf.userPassword,weakSelf.userPasswordIcon,weakSelf.userPasswordBG]] shake];
     }];
-
+    
 }
 
 - (IBAction)registerClick:(UIButton *)sender
@@ -179,9 +199,6 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.userName.text =  [defaults valueForKey:@"userName"];
     self.userPassword.text = [defaults valueForKey:@"userPassword"];
-//    if (self.autoLoginBtn.isSelected &&!self.isLogout) {
-//        [self loginClick];
-//    }
 }
 - (IBAction)rememberPasswowrdClick:(UIButton *)sender
 {
@@ -201,4 +218,32 @@
     }
     [self saveButtonStates];
 }
+#pragma mark -处理键盘
+- (void)addKeyboardNote
+{
+    //获取通知中心
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    //键盘要弹出
+    [center addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    //键盘要消失
+    [center addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+//键盘弹出
+- (void)keyboardWillShow:(NSNotification *)note
+{
+    //动画调整
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        self.logbgView.transform = CGAffineTransformMakeTranslation(0,  -200);
+    }];
+    
+}
+//键盘隐藏
+- (void)keyboardWillHide:(NSNotification *)note
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.logbgView.transform = CGAffineTransformIdentity;
+    }];
+}
+
 @end

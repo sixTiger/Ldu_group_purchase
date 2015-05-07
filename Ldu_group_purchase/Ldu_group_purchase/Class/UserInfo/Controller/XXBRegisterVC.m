@@ -10,28 +10,53 @@
 
 @interface XXBRegisterVC ()
 
+@property (weak, nonatomic) IBOutlet UIButton *iconButton;
+
+@property (weak, nonatomic) IBOutlet UIView *registerBGView;
+
 @end
 
 @implementation XXBRegisterVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self addKeyboardNote];
+    self.iconButton.layer.cornerRadius = self.iconButton.width * 0.5;
+    self.iconButton.clipsToBounds = YES;
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
-*/
-
+#pragma mark -处理键盘
+- (void)addKeyboardNote
+{
+    //获取通知中心
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    //键盘要弹出
+    [center addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    //键盘要消失
+    [center addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+//键盘弹出
+- (void)keyboardWillShow:(NSNotification *)note
+{
+    //动画调整
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        self.registerBGView.transform = CGAffineTransformMakeTranslation(0,  -200);
+    }];
+    
+}
+//键盘隐藏
+- (void)keyboardWillHide:(NSNotification *)note
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.registerBGView.transform = CGAffineTransformIdentity;
+    }];
+}
 @end

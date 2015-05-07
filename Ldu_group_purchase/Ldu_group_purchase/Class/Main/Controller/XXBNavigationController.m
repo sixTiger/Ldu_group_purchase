@@ -18,7 +18,7 @@
 {
     UINavigationBar *navBar = [UINavigationBar appearance];
     [navBar setBackgroundImage:[UIImage imageNamed:@"bg_navigationBar_normal"] forBarMetrics:UIBarMetricsDefault];
-    
+    navBar.tintColor = [UIColor grayColor];
     UIBarButtonItem *item = [UIBarButtonItem appearance];
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSForegroundColorAttributeName] = XXBColor(29, 177, 157);
