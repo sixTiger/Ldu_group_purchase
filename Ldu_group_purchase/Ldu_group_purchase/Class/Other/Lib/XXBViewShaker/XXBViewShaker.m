@@ -64,18 +64,16 @@ static NSString * const XXBViewShakerAnimationKey = @"XXBViewShakerAnimationKey"
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [view.layer addAnimation:animation forKey:XXBViewShakerAnimationKey];
 }
-
-
 #pragma mark - CAAnimation Delegate 重写系统的方法 当动画及结束的时候执行block
 - (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag {
     self.completedAnimations += 1;
-    if ( self.completedAnimations >= self.views.count ) {
+    if ( self.completedAnimations >= self.views.count )
+    {
         self.completedAnimations = 0;
-        if ( self.completionBlock ) {
+        if ( self.completionBlock )
+        {
             self.completionBlock();
         }
     }
 }
-
-
 @end

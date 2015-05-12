@@ -8,9 +8,13 @@
 
 #import "XXBLoginViewController.h"
 #import "UIBarButtonItem+Extension.h"
-#import "XXBUserTool.h"
 #import "XXBViewShaker.h"
 #import "XXBRegisterVC.h"
+
+#import "XXBUserTools.h"
+#import "XXBUserModle.h"
+#import "NSString+Help.h"
+#import "XXBChangeUserInfoView.h"
 
 @interface XXBLoginViewController ()
 /**
@@ -67,6 +71,23 @@
  */
 @property (nonatomic, strong) UIBarButtonItem *backItem;
 
+/**
+ *  更改用户信息
+ */
+@property (nonatomic, strong) UIBarButtonItem *rightItem;
+/**
+ *  退出按钮
+ */
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+/**
+ *  注册按钮
+ */
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+
+/**
+ *  用户信息更改的窗口
+ */
+@property(nonatomic , weak)XXBChangeUserInfoView *chageUserInfoView;
 
 /**
  *  登录点击
@@ -76,12 +97,15 @@
 
 @property (weak, nonatomic) IBOutlet UIView *logbgView;
 
+- (IBAction)logoutClick:(UIButton *)sender;
+
 @end
 
 @implementation XXBLoginViewController
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self setupLoginView];
     [self addKeyboardNote];
 }
 - (void)viewWillDisappear:(BOOL)animated
@@ -91,22 +115,33 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+- (void)setupLoginView
+{
     // 设置左上角的返回按钮
     self.navigationItem.leftBarButtonItems = @[self.backItem];
     [self setLoginViewController];
     self.iconButton.layer.cornerRadius = self.iconButton.width * 0.5;
     self.iconButton.clipsToBounds = YES;
-    [XXBUserTool registerWithUserName:@"123" password:@"123" successed:^{
-        
-    } failed:^(NSString *error) {
-        
-    }];
-}
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.view endEditing:YES];
+    self.chageUserInfoView.edit = self.chageUserInfoView.edit;
+    NSNumber *userID = [[NSUserDefaults standardUserDefaults] objectForKey:@"userID"];
+    if (userID.intValue > 0)
+    {
+        self.chageUserInfoView.hidden = NO;
+        self.navigationItem.rightBarButtonItem = self.rightItem;
+        self.logoutButton.hidden = NO;
+        self.registerButton.hidden = YES;
+    }
+    else
+    {
+        self.chageUserInfoView.hidden = YES;
+        self.navigationItem.rightBarButtonItem = nil;
+        self.logoutButton.hidden = YES;
+        self.registerButton.hidden = NO;
+    }
 }
 #pragma mark -  事件处理
 
@@ -118,32 +153,84 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark - 懒加载
+- (XXBChangeUserInfoView *)chageUserInfoView
+{
+    if (_chageUserInfoView == nil)
+    {
+        XXBChangeUserInfoView *chageUserInfoView = [[XXBChangeUserInfoView alloc] initWithFrame: self.logbgView.bounds];
+        [self.logbgView addSubview:chageUserInfoView];
+        _chageUserInfoView = chageUserInfoView;
+    }
+    return _chageUserInfoView;
+}
+- (UIBarButtonItem *)rightItem
+{
+    if (_rightItem == nil)
+    {
+        _rightItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(editClick)];
+    }
+    return _rightItem;
+}
+- (void)editClick
+{
+    if([self.rightItem.title isEqualToString:@"编辑"])
+    {
+        self.chageUserInfoView.edit = YES;
+        self.rightItem.title = @"保存";
+    }
+    else
+    {
+        self.chageUserInfoView.edit = NO;
+        if (self.chageUserInfoView.edit )
+            return;
+        [self.view endEditing:YES];
+        self.rightItem.title = @"编辑";
+    }
+}
 - (UIBarButtonItem *)backItem
 {
-    if (_backItem == nil) {
-        self.backItem = [UIBarButtonItem itemWithImageName:@"icon_back" highImageName:@"icon_back_highlighted" target:self action:@selector(back)];
+    if (_backItem == nil)
+    {
+        _backItem = [UIBarButtonItem itemWithImageName:@"icon_back" highImageName:@"icon_back_highlighted" target:self action:@selector(back)];
     }
     return _backItem;
 }
 - (IBAction)loginClick:(id)sender {
     [self saveButtonStates];
     __weak typeof(self) weakSelf = self;
-    [XXBUserTool loginWithUserName:self.userName.text password:self.userPassword.text successed:^{
-        [MBProgressHUD showSuccess:@"登录成功" toView:self.view];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakSelf dismissViewControllerAnimated:YES completion:nil];
-        });
-    } failed:^(NSString *error) {
-        [MBProgressHUD showError:error toView:self.view];
+    XXBUserModle *userModle = [XXBUserTools userWithUserName:self.userName.text];
+    if (userModle == nil)
+    {
+        [MBProgressHUD showError:@"没有用户" toView:self.view];
         [[[XXBViewShaker alloc] initWithViewsArray:@[weakSelf.userName,weakSelf.userNameIcon,weakSelf.userNameBG,weakSelf.userPassword,weakSelf.userPasswordIcon,weakSelf.userPasswordBG]] shake];
-    }];
-    
+    }
+    else
+    {
+        if([userModle.userPassword isEqualToString:self.userPassword.text.md5String])
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:userModle.userID forKey:@"userID"];
+            [MBProgressHUD showSuccess:@"登录成功" toView:self.view];
+            [self setupLoginView];
+        }
+        else
+        {
+            [MBProgressHUD showSuccess:@"登录失败" toView:self.view];
+            [[[XXBViewShaker alloc] initWithViewsArray:@[weakSelf.userName,weakSelf.userNameIcon,weakSelf.userNameBG,weakSelf.userPassword,weakSelf.userPasswordIcon,weakSelf.userPasswordBG]] shake];
+        }
+      
+    }
 }
 
 - (IBAction)registerClick:(UIButton *)sender
 {
     XXBRegisterVC *reisterVC = [[XXBRegisterVC alloc] init];
     [self.navigationController pushViewController:reisterVC animated:YES];
+}
+
+- (IBAction)logoutClick:(UIButton *)sender
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"userID"];
+    [self setupLoginView];
 }
 /**
  设置窗口的信息

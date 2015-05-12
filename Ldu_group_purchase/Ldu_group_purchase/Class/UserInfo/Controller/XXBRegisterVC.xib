@@ -9,6 +9,9 @@
             <connections>
                 <outlet property="iconButton" destination="taj-8W-t0m" id="Mdk-5C-vPW"/>
                 <outlet property="registerBGView" destination="sxM-ev-z2Z" id="ubz-8I-8dr"/>
+                <outlet property="userNameTF" destination="2zL-rU-un2" id="bQp-ay-dQs"/>
+                <outlet property="userPasswordTF" destination="m7Y-hO-if0" id="5gn-9u-a2f"/>
+                <outlet property="userRePasswordTF" destination="e7E-HA-E1z" id="hRq-hQ-tN4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,7 +53,7 @@
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="设置密码" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m7Y-hO-if0">
                             <rect key="frame" x="60" y="73" width="232" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="btn_green" translatesAutoresizingMaskIntoConstraints="NO" id="RpL-eT-era">
                             <rect key="frame" x="8" y="118" width="284" height="44"/>
@@ -58,7 +61,7 @@
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证密码" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e7E-HA-E1z">
                             <rect key="frame" x="60" y="131" width="232" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_login_password" translatesAutoresizingMaskIntoConstraints="NO" id="mAI-9r-yVy">
                             <rect key="frame" x="8" y="118" width="44" height="44"/>
@@ -72,6 +75,9 @@
                             <state key="highlighted" backgroundImage="btn_green_highlighted">
                                 <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="registerClick:" destination="-1" eventType="touchUpInside" id="QmT-qO-a3j"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

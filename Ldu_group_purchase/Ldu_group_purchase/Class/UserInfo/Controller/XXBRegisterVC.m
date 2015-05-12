@@ -7,12 +7,31 @@
 //
 
 #import "XXBRegisterVC.h"
+#import "XXBUserTools.h"
+#import "NSString+Help.h"
+#import "XXBUserModle.h"
+#import "XXBViewShaker.h"
 
 @interface XXBRegisterVC ()
 
 @property (weak, nonatomic) IBOutlet UIButton *iconButton;
 
 @property (weak, nonatomic) IBOutlet UIView *registerBGView;
+/**
+ *  账号
+ */
+@property (weak, nonatomic) IBOutlet UITextField *userNameTF;
+/**
+ *  密码
+ */
+@property (weak, nonatomic) IBOutlet UITextField *userPasswordTF;
+/**
+ *  验证密码
+ */
+@property (weak, nonatomic) IBOutlet UITextField *userRePasswordTF;
+
+- (IBAction)registerClick:(UIButton *)sender;
+
 
 @end
 
@@ -32,6 +51,52 @@
 {
     [self.view endEditing:YES];
 }
+
+- (IBAction)registerClick:(UIButton *)sender
+{
+    if(self.userNameTF.text.length < 1)
+    {
+        [MBProgressHUD showError:@"没有设置账号"];
+        [self.userNameTF becomeFirstResponder];
+        [[[XXBViewShaker alloc] initWithViewsArray:@[self.registerBGView]] shake];
+        return;
+    }
+    if (self.userPasswordTF.text.length < 1)
+    {
+        [MBProgressHUD showError:@"没有设置密码"];
+        self.userPasswordTF.text = @"";
+        self.userRePasswordTF.text = @"";
+        [self.userPasswordTF becomeFirstResponder];
+        [[[XXBViewShaker alloc] initWithViewsArray:@[self.registerBGView]] shake];
+        return ;
+    }
+    if (![self.userPasswordTF.text isEqualToString:self.userRePasswordTF.text])
+    {
+        [MBProgressHUD showError:@"两次设置的密码不一样"];
+        self.userPasswordTF.text = @"";
+        self.userRePasswordTF.text = @"";
+        [self.userPasswordTF becomeFirstResponder];
+        [[[XXBViewShaker alloc] initWithViewsArray:@[self.registerBGView]] shake];
+        return;
+    }
+    XXBUserModle *userModle = [XXBUserTools userWithUserName:self.userNameTF.text];
+    if (userModle)
+    {
+        [MBProgressHUD showError:@"用户已存在"];
+        self.userNameTF.text = @"";
+        [[[XXBViewShaker alloc] initWithViewsArray:@[self.registerBGView]] shake];
+        return;
+    }
+    userModle = [[XXBUserModle alloc] init];
+    userModle.userName = self.userNameTF.text;
+    userModle.userPassword = [self.userPasswordTF.text md5String];
+    [XXBUserTools addUser:userModle];
+    userModle = [XXBUserTools userWithUserName:self.userNameTF.text];
+    [[NSUserDefaults standardUserDefaults] setObject:userModle.userID forKey:@"userID"];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+
 #pragma mark -处理键盘
 - (void)addKeyboardNote
 {

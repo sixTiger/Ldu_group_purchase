@@ -10,6 +10,8 @@
                 <outlet property="autoLogin" destination="bzJ-Y5-jkF" id="IAC-yf-kO8"/>
                 <outlet property="iconButton" destination="9Wx-N4-ZgQ" id="303-mq-gIq"/>
                 <outlet property="logbgView" destination="zJE-xg-0oW" id="T98-2C-fwr"/>
+                <outlet property="logoutButton" destination="xvR-iy-R9i" id="hvb-35-2mw"/>
+                <outlet property="registerButton" destination="YAI-7B-spG" id="22Y-ng-85j"/>
                 <outlet property="rememberPasswowrd" destination="KgN-ux-Get" id="NHH-Qf-rgE"/>
                 <outlet property="userName" destination="9o0-Az-F0i" id="tdR-P9-lyd"/>
                 <outlet property="userNameBG" destination="6tb-Gv-PAl" id="OSC-5f-8gq"/>
@@ -88,7 +90,7 @@
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W02-HJ-pgL">
                             <rect key="frame" x="60" y="73" width="232" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgN-ux-Get">
                             <rect key="frame" x="8" y="170" width="100" height="25"/>
@@ -165,13 +167,28 @@
                         <action selector="registerClick:" destination="-1" eventType="touchUpInside" id="K4h-J7-vMu"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvR-iy-R9i">
+                    <rect key="frame" x="8" y="548" width="100" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="pLg-8r-0cC"/>
+                        <constraint firstAttribute="height" constant="44" id="vbL-pa-0he"/>
+                    </constraints>
+                    <state key="normal" title="退出">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="logoutClick:" destination="-1" eventType="touchUpInside" id="Frj-Xo-Nvf"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="zJE-xg-0oW" secondAttribute="centerX" id="A08-3j-h0M"/>
                 <constraint firstAttribute="trailing" secondItem="YAI-7B-spG" secondAttribute="trailing" constant="8" id="JoL-SV-vUY"/>
                 <constraint firstAttribute="bottom" secondItem="YAI-7B-spG" secondAttribute="bottom" constant="8" id="MyN-fu-nwP"/>
+                <constraint firstAttribute="bottom" secondItem="xvR-iy-R9i" secondAttribute="bottom" constant="8" id="fIW-Ex-LzC"/>
                 <constraint firstItem="9Wx-N4-ZgQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="jel-zA-8df"/>
+                <constraint firstItem="xvR-iy-R9i" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="own-LJ-7aE"/>
                 <constraint firstAttribute="centerX" secondItem="9Wx-N4-ZgQ" secondAttribute="centerX" id="rbe-cl-hvD"/>
                 <constraint firstItem="zJE-xg-0oW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="240" id="vjE-UE-Vtd"/>
             </constraints>
